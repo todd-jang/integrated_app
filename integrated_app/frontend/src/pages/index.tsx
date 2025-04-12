@@ -72,3 +72,56 @@ export default function Home() {
   );
 }
 
+
+<-!import React, { useState } from 'react';
+import { sendQuery } from '../lib/api';
+import AgentLog from '../components/AgentLog';
+import Loader from '../components/Loader';
+
+const IndexPage: React.FC = () => {
+  const [query, setQuery] = useState('');
+  const [response, setResponse] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleQuerySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const data = await sendQuery(query);
+    setResponse(data);
+    setLoading(false);
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">AI Query System</h1>
+      
+      <form onSubmit={handleQuerySubmit} className="mb-4">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Enter your query"
+          className="border p-2 rounded-lg w-full"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white p-2 rounded-lg mt-2 w-full"
+        >
+          Submit Query
+        </button>
+      </form>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          {response && <AgentLog agentName="AI Agent" logs={response.logs} />}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default IndexPage;
+->
+
