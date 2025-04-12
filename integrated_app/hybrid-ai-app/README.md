@@ -6,7 +6,6 @@ cd integrated_app/frontend
 npm install tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 
-3. 
-프로젝트를 실행하기 위해서는 아래 명령어를 통해 Next.js 개발 서버를 시작합니다.
+3. 프로젝트를 실행하기 위해서는 아래 명령어를 통해 Next.js 개발 서버를 시작합니다.
 npm install
 npm run dev
