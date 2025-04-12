@@ -22,3 +22,25 @@ def run():
     return jsonify({"result": agent.run(text)})
 
 gr.Interface(fn=agent_ui, inputs="text", outputs="text").launch(server_name="0.0.0.0")
+
+# gradio없이
+# ai_agent/app.py
+"""from flask import Flask, request, jsonify
+from ai_agent.agent_logic import ask_agent
+
+app = Flask(__name__)
+
+@app.route("/ask", methods=["POST"])
+def handle_question():
+    data = request.json
+    question = data.get("question", "")
+    if not question:
+        return jsonify({"error": "No question provided"}), 400
+    try:
+        answer = ask_agent(question)
+        return jsonify({"answer": answer})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)"""
