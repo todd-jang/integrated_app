@@ -1,0 +1,9 @@
+services:
+  flask-agent:
+    image: johndoe/flask-agent:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/mydb
+    depends_on:
+      - postgres
