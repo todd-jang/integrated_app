@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: dev
+flask:
+  base-url: http://flask-agent:5000  # docker-compose 내부 도메인
