@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "ai-agent"
+version = "0.1.0"
+description = "LangChain + Flask AI Agent backend"
+authors = ["todd-jang <you@example.com>"]
+readme = "README.md"
+packages = [{include = "ai_agent"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^2.3.2"
+langchain = "^0.1.0"
+llama-index = "^0.9.0"
+ollama = "^0.1.0"
+uvicorn = "^0.24.0"
+gunicorn = "^21.2.0"
+toml = "^0.10.2"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+black = "^24.3.0"
+mypy = "^1.7.0"
+isort = "^5.13.0"
+pytest = "^7.4.0"
+httpx = "^0.25.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# --- Optional Tool Configs ---
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+strict_optional = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]
